@@ -16,7 +16,7 @@ export function handleError(error: Response | any){
       console.error(errMsg);
     }
     return Observable.throw(errMsg);
-  }
+}
 
 export function mapDataItem(response: Response){
   let responseItem = response.json();
