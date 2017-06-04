@@ -1,3 +1,5 @@
-<p>
-  listforces works!
-</p>
+<ul class="list-group" *ngFor="let force of forces">
+  <li>
+    <a href="#" class="list-group-item list-group-item-action">{{force.name}}</a>
+  </li>
+</ul>

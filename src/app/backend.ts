@@ -20,5 +20,5 @@ export function handleError(error: Response | any){
 
 export function mapDataItem(response: Response){
   let responseItem = response.json();
-  return responseItem.data || { };
+  return responseItem || { };
 }
