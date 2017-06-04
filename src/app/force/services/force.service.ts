@@ -5,15 +5,15 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 import { ForceModel } from '../models/force.model';
-import { Backend } from '../../backend';
+import { Backend, handleError, mapDataItem } from '../../backend';
 
 @Injectable()
 export class ForceService {
   constructor(private http: Http) { }
 
   getAllForces(): Observable<ForceModel[]>{
-    return this.http.get(Backend.url)
-          .map(Backend.mapDataItem)
-          .catch(Backend.handleError);
+    return this.http.get(Backend.url + '/forces')
+          .map(mapDataItem)
+          .catch(handleError);
   }
 }

@@ -2,14 +2,10 @@ import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 export const Backend = {
-  url:  'https://data.police.uk/api',
- 
-  mapDataItem(response: Response){
-    let responseItem = response.json();
-    return responseItem.data || { };
-  },
+  url:  'https://data.police.uk/api'
+}
 
-  handleError(error: Response | any){
+export function handleError(error: Response | any){
     let errMsg: string;
     if(error instanceof Response){
       const body = error.json() || '';
@@ -21,4 +17,8 @@ export const Backend = {
     }
     return Observable.throw(errMsg);
   }
+
+export function mapDataItem(response: Response){
+  let responseItem = response.json();
+  return responseItem.data || { };
 }
