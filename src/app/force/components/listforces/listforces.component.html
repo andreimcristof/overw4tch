@@ -1,5 +1,20 @@
-<ul class="list-group" *ngFor="let force of forces">
-  <li>
-    <a href="#" class="list-group-item list-group-item-action">{{force.name}}</a>
-  </li>
-</ul>
+<div class="row">
+  <div class="col-md-6">
+    <table class="table">
+      <tbody *ngFor="let force of forces | slice: 1:forces.length/2">
+        <tr>
+          <a href="#" class="">{{force.name}}</a>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <table class="table">
+      <tbody *ngFor="let force of forces | slice: forces.length/2:forces.length">
+        <tr>
+          <a href="#" class="">{{force.name}}</a>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

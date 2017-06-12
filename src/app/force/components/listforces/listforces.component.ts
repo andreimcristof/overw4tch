@@ -10,7 +10,7 @@ import { ForceModel } from '../../models/force.model';
 })
 
 export class ListForcesComponent implements OnInit {
-  forces: ForceModel[];
+  forces: ForceModel[] = [];
   err: string;
   constructor(private forceService: ForceService) { }
 
@@ -19,9 +19,9 @@ export class ListForcesComponent implements OnInit {
   }
 
   getAllForces() {
-    this.forceService.getAllForces().subscribe(
+    this.forceService.getAllForces()
+    .subscribe(
       forces => this.forces = forces,
       err => this.err = <any>err);
   }
-
 }
