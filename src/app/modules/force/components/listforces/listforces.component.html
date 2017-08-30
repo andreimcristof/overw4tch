@@ -3,7 +3,7 @@
     <table class="table">
       <tbody *ngFor="let force of forces | slice: 1:forces.length/2">
         <tr>
-          <a href="#" class="">{{force.name}}</a>
+          <a [routerLink]="['/force', force.id]">{{force.name}}</a>
         </tr>
       </tbody>
     </table>
@@ -12,7 +12,7 @@
     <table class="table">
       <tbody *ngFor="let force of forces | slice: forces.length/2:forces.length">
         <tr>
-          <a href="#" class="">{{force.name}}</a>
+          <a [routerLink]="['/force', force.id]">{{force.name}}</a>
         </tr>
       </tbody>
     </table>

@@ -2,23 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { RoutenotfoundComponent } from './shared/routenotfound/routenotfound.component';
-
-import { StreetModule } from './street/street.module';
-import { ForceModule } from './force/force.module';
-
 import { AppRoutes } from './app.routes';
+
+import { StreetModule } from 'app/modules/street/street.module';
+import { ForceModule } from 'app/modules/force/force.module';
+import { SharedModule } from 'app/modules/shared/shared.module';
+import { TestModule } from 'app/modules/test/test.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    RoutenotfoundComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +24,8 @@ import { AppRoutes } from './app.routes';
 
     ForceModule,
     StreetModule,
-
+    SharedModule,
+    TestModule,
     RouterModule.forRoot(AppRoutes)
   ],
   providers: [],
