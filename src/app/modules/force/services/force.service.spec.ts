@@ -1,11 +1,12 @@
 import { TestBed, inject } from '@angular/core/testing';
-
-import { ForceService } from './force.service';
+import { RouterModule } from '@angular/router';
+import { ForceService, ForceServiceTest } from './force.service';
 
 describe('ForceService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ForceService]
+      imports: [RouterModule],
+      providers: [{provide: ForceService, useClass: ForceServiceTest }]
     });
   });
 

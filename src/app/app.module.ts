@@ -10,8 +10,6 @@ import { AppRoutes } from './app.routes';
 import { StreetModule } from 'app/modules/street/street.module';
 import { ForceModule } from 'app/modules/force/force.module';
 import { SharedModule } from 'app/modules/shared/shared.module';
-import { TestModule } from 'app/modules/test/test.module';
-
 
 @NgModule({
   declarations: [
@@ -25,7 +23,6 @@ import { TestModule } from 'app/modules/test/test.module';
     ForceModule,
     StreetModule,
     SharedModule,
-    TestModule,
     RouterModule.forRoot(AppRoutes)
   ],
   providers: [],

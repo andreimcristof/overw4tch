@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterModule } from '@angular/router';
 import { ListForcesComponent } from './listforces.component';
+import { ForceService, ForceServiceTest } from 'app/modules/force/services/force.service';
 
 describe('ListforcesComponent', () => {
   let component: ListForcesComponent;
@@ -8,7 +9,9 @@ describe('ListforcesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListForcesComponent ]
+      imports: [RouterModule],
+      declarations: [ ListForcesComponent ],
+      providers: [{provide: ForceService, useClass: ForceServiceTest }]
     })
     .compileComponents();
   }));
