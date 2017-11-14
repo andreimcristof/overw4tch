@@ -19,9 +19,25 @@
   </div>
 </div> -->
 
-
+<!--
 <div class="row">
 <mat-list>
-  <mat-list-item *ngFor="let force of forces"></mat-list-item>
+  <mat-list-item *ngFor="let force of forces">
+    <mat-icon matListIcon>folder</mat-icon>
+    <a mat-line [routerLink]="['/force', force.id]">{{force.name}}</a>
+    <mat-divider></mat-divider>
+  </mat-list-item>
 </mat-list>
+</div> -->
+
+<div class="row">
+  <mat-table #table [dataSource]="forces">
+     <ng-container matColumnDef="name">
+       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+       <a [routerLink]="['/force', force.id]" mat-cell *matCellDef="let force"> {{force.name}} </a>
+     </ng-container>
+
+     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 </div>
