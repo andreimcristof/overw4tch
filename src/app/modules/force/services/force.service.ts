@@ -25,12 +25,12 @@ export class ForceService {
   }
 }
 
-export class ForceServiceTest {
+export class MockForceService {
   getAllForces(): Observable<ForceModel[]>{
     let res = new Array<ForceModel>();
     return Observable.of(res);
   }
-  
+
   getForce(id): Observable<ForceModel>{
     return Observable.of(null);
   }

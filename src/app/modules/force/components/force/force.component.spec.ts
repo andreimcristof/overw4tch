@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ForceService, ForceServiceTest } from 'app/modules/force/services/force.service';
+import { ForceService, MockForceService } from 'app/modules/force/services/force.service';
 // import { RouterModule, ActivatedRoute } from '@angular/router';
 
 import { RouterTestingModule } from '@angular/router/testing';
@@ -18,9 +18,7 @@ describe('ForceComponent', () => {
       ],
       declarations: [ ForceComponent ],
       providers: [
-        // Location,
-        {provide: ForceService, useClass: ForceServiceTest },
-        // { provide: ActivatedRoute, useValue: { params: Observable.of({id: 1}) } }
+        {provide: ForceService, useClass: MockForceService },
       ]
     })
     .compileComponents();
