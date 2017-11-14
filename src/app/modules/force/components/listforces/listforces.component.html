@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col-xs-6">
     <table class="table">
       <tbody *ngFor="let force of forces | slice: 1:forces.length/2">
@@ -17,4 +17,11 @@
       </tbody>
     </table>
   </div>
+</div> -->
+
+
+<div class="row">
+<mat-list>
+  <mat-list-item *ngFor="let force of forces"></mat-list-item>
+</mat-list>
 </div>

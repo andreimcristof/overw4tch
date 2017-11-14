@@ -9,3 +9,5 @@ This project uses the public API at https://data.police.uk/docs/
 
 `npm install`  
 `npm run coverage`
+
+this app uses the latest Angular Material 2.
