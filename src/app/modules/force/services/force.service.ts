@@ -12,26 +12,31 @@ import { Backend, handleError, mapDataItem } from 'app/backend';
 export class ForceService {
   constructor(private http: Http) { }
 
-  getAllForces(): Observable<ForceModel[]>{
+  getAllForces(): Promise<ForceModel[]>{
     return this.http.get(Backend.url + '/forces')
           .map(mapDataItem)
-          .catch(handleError);
+          .toPromise()
+          .catch(handleError)
   }
 
-  getForce(id: string): Observable<ForceModel> {
+  getForce(id: string): Promise<ForceModel> {
     return this.http.get(Backend.url + '/forces/' + id)
           .map(mapDataItem)
+          .toPromise()
           .catch(handleError);
   }
 }
-
-export class MockForceService {
-  getAllForces(): Observable<ForceModel[]>{
-    let res = new Array<ForceModel>();
-    return Observable.of(res);
-  }
-
-  getForce(id): Observable<ForceModel>{
-    return Observable.of(null);
-  }
-}
+//
+// export class MockForceService: Promise<ForceModel[]> {
+//   getAllForces(): Observable<ForceModel[]> {
+//     let res: ForceModel[] = [
+//       {id: '1', name: '1' },
+//       {id: '2', name: '2' }
+//     ];
+//     return Observable.of(res).map(r => {return r; });
+//   }
+//
+//   getForce(id): Observable<ForceModel> {
+//     return Observable.of(null);
+//   }
+// }

@@ -15,7 +15,9 @@ export class ListForcesComponent implements OnInit {
   displayedColumns = ['name'];
   err: string;
 
-  constructor(private forceService: ForceService) {
+  constructor(
+    private forceService: ForceService
+  ) {
 
   }
 
@@ -25,7 +27,7 @@ export class ListForcesComponent implements OnInit {
 
   getAllForces() {
     this.forceService.getAllForces()
-    .subscribe(
+    .then(
       forces => this.forces = new MatTableDataSource(forces as ForceModel[]),
       err => this.err = <any>err);
   }

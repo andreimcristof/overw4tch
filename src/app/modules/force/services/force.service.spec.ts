@@ -1,12 +1,16 @@
+import { Http } from '@angular/http';
 import { TestBed, inject } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
-import { ForceService, MockForceService } from './force.service';
+import { ForceService } from './force.service';
 
 describe('ForceService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [RouterModule],
-      providers: [{provide: ForceService, useClass: MockForceService }]
+      providers: [
+        ForceService,
+        { provide: Http, useValue: null }
+      ]
     });
   });
 

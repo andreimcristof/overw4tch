@@ -1,7 +1,8 @@
+import { ConnectionBackend, Http, BaseRequestOptions, RequestOptions } from '@angular/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ForceService, MockForceService } from 'app/modules/force/services/force.service';
-// import { RouterModule, ActivatedRoute } from '@angular/router';
-
+import { Injector } from '@angular/core';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import { ForceService } from 'app/modules/force/services/force.service';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { ForceComponent } from './force.component';
@@ -16,15 +17,24 @@ describe('ForceComponent', () => {
       imports: [
         RouterTestingModule.withRoutes([])
       ],
-      declarations: [ ForceComponent ],
-      providers: [
-        {provide: ForceService, useClass: MockForceService },
-      ]
+      declarations: [ ForceComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
+    this.injector = Injector.create(
+       [
+          { provide: ConnectionBackend, useClass: MockBackend, useFactory: MockBackend },
+          { provide: RequestOptions, useClass: BaseRequestOptions, useFactory: BaseRequestOptions },
+          { provide: Http, useClass: Http, useFactory: Http },
+          { provide: ForceService, useClass: ForceService, useFactory: ForceService }
+      ]
+    );
+    this.forceService = this.injector.get(ForceService);
+    this.backend = this.injector.get(ConnectionBackend) as MockBackend;
+    this.backend.connections.subscribe((conn)=> { this.lastConnection = conn });
+
     fixture = TestBed.createComponent(ForceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
