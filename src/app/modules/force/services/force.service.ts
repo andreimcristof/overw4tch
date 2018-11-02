@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
+import { map } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 
@@ -26,17 +25,3 @@ export class ForceService {
           .catch(handleError);
   }
 }
-//
-// export class MockForceService: Promise<ForceModel[]> {
-//   getAllForces(): Observable<ForceModel[]> {
-//     let res: ForceModel[] = [
-//       {id: '1', name: '1' },
-//       {id: '2', name: '2' }
-//     ];
-//     return Observable.of(res).map(r => {return r; });
-//   }
-//
-//   getForce(id): Observable<ForceModel> {
-//     return Observable.of(null);
-//   }
-// }

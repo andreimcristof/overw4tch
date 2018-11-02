@@ -6,7 +6,6 @@ import { ForceService } from 'app/modules/force/services/force.service';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { ForceComponent } from './force.component';
-import { Observable } from 'rxjs/Observable';
 
 describe('ForceComponent', () => {
   let component: ForceComponent;
@@ -22,6 +21,8 @@ describe('ForceComponent', () => {
     .compileComponents();
   }));
 
+
+  //TODO refactor
   beforeEach(() => {
     this.injector = Injector.create(
        [
