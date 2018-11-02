@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ForceService } from '../../services/force.service';
 import { ForceModel } from '../../models/force.model';
-import {MatTableDataSource} from '@angular/material';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-listforces',
@@ -27,8 +27,8 @@ export class ListForcesComponent implements OnInit {
 
   getAllForces() {
     this.forceService.getAllForces()
-    .then(
-      forces => this.forces = new MatTableDataSource(forces as ForceModel[]),
-      err => this.err = <any>err);
+      .subscribe(
+        forces => this.forces = new MatTableDataSource(forces as ForceModel[]),
+        err => this.err = <any>err);
   }
 }

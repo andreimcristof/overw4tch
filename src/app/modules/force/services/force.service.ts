@@ -1,27 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { map } from 'rxjs/operators';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/of';
-
+import { HttpClient } from '@angular/common/http';
 import { ForceModel } from 'app/modules/force/models/force.model';
-import { Backend, handleError, mapDataItem } from 'app/backend';
+import { Backend } from 'app/backend';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class ForceService {
-  constructor(private http: Http) { }
+  constructor(private httpClient: HttpClient) { }
 
-  getAllForces(): Promise<ForceModel[]>{
-    return this.http.get(Backend.url + '/forces')
-          .map(mapDataItem)
-          .toPromise()
-          .catch(handleError)
+  getAllForces(): Observable<ForceModel[]>{
+    return this.httpClient
+            .get<ForceModel[]>(Backend.url + '/forces');
   }
 
-  getForce(id: string): Promise<ForceModel> {
-    return this.http.get(Backend.url + '/forces/' + id)
-          .map(mapDataItem)
-          .toPromise()
-          .catch(handleError);
+  getForce(id: string): Observable<ForceModel> {
+    console.info("getForce")
+    return this.httpClient
+            .get<ForceModel>(Backend.url + '/forces/' + id)
   }
 }

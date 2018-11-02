@@ -5,7 +5,7 @@ export const Backend = {
   url:  'https://data.police.uk/api'
 }
 
-export function handleError(error: Response | any){
+export function handleError(error: Response | any) {
     let errMsg: string;
     if(error instanceof Response){
       const body = error.json() || '';
@@ -19,7 +19,3 @@ export function handleError(error: Response | any){
     return Observable.throw(errMsg);
 }
 
-export function mapDataItem(response: Response){
-  let responseItem = response.json();
-  return responseItem || { };
-}
